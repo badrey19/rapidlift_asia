@@ -57,8 +57,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       "Maaf, saya tidak bisa membantu saat ini.";
 
     return res.status(200).json({ text: assistantText });
-  } catch (err: any) {
-    console.error("Server error:", err);
-    return res.status(500).json({ error: err?.message ?? "Server error" });
-  }
+  } catch (err) {
+  const error = err instanceof Error ? err.message : String(err);
+  console.error(error);
+  return res.status(500).json({ error });
+}
+
 }

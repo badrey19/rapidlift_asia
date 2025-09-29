@@ -84,16 +84,19 @@ export default function Chatbot() {
         text: replyText,
         createdAt: Date.now(),
       });
-    } catch (err: any) {
-      addMessage({
-        id: uid("a_"),
-        role: "assistant",
-        text:
-          err?.message ??
-          "⚠️ Terjadi kesalahan saat menghubungi server. Silakan coba lagi.",
-        createdAt: Date.now(),
-      });
-    } finally {
+    } catch (err) {
+  const errorMessage =
+    err instanceof Error
+      ? err.message
+      : "⚠️ Terjadi kesalahan saat menghubungi server. Silakan coba lagi.";
+
+  addMessage({
+    id: uid("a_"),
+    role: "assistant",
+    text: errorMessage,
+    createdAt: Date.now(),
+  });
+} finally {
       setLoading(false);
     }
   };
