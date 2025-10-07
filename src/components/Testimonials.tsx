@@ -44,8 +44,9 @@ export default function Testimonials() {
                 />
               </div>
               <p className="text-gray-600 dark:text-gray-300 italic mb-4">
-                "{t.text}"
+                &quot;{t.text}&quot;
               </p>
+
               <h4 className="font-semibold text-gray-900 dark:text-white">
                 {t.name}
               </h4>

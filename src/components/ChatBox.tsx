@@ -84,7 +84,7 @@ export default function Chatbot() {
         text: replyText,
         createdAt: Date.now(),
       });
-    } catch (err) {
+    } catch (err: unknown) {
   const errorMessage =
     err instanceof Error
       ? err.message
